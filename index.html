@@ -1,17 +1,21 @@
 <!doctype html>
-<html>
+<html lang="es">
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="Tania Álvarez Díaz">
 
-		<title>reveal.js</title>
+		<title>Dibujo colaborativo con WebSockets</title>
 
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/league.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Custom theme-->
+		<link rel="stylesheet" href="css/custom.css">
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -25,24 +29,276 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section class="center">
+					<h1>Blog de difusión de contenidos</h1>
+					<p>Tania Álvarez Díaz</p>
+					<p><a href="mailto:uo244856@uniovi.es">UO244856@uniovi.es</a></p>
+					<p><small>Difusión de contenidos multimedia vía web</small></p>
+				</section>
+				<section>
+					<h2>Índice</h2>
+					<ul>
+						<li>Introducción.</li>
+						<li>Desarrollo.</li>
+						<li>Despliegue.</li>
+					</ul>
+				</section>
+				<section>
+					<h2 hidden>Introducción</h2>
+					<section>
+						<h2>Introducción</h2>
+						<ul>
+							<li>Blog desarrollado para la asignatura <b>Difusión de contenidos multimedia vía web</b> del Máster en Ingeniería Web de la Universidad de Oviedo.</li>
+							<li>Su principal <b>finalidad</b> es mostrar el proceso de desarrollo de los distintos ejercicios de la asignatura.</li>
+							<li>
+								Ejercicios:
+								<ul>
+									<li><a href="https://github.com/TaniaAlvarezDiaz/DibujoColaborativoWebSockets">WebSockets</a>: una aplicación de dibujo colaborativo con WebSockets, donde los usuarios puede dibujar figuras y compartirlas con el resto de usuarios.</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Introducción</h2>
+						<ul>
+							<li>
+								Ejercicios:
+								<ul>
+									<li><a href="https://github.com/TaniaAlvarezDiaz/VideochatWebRTC">WebRTC</a>: aplicación de videochat utilizando WebRTC. Esta aplicación permite a los usuarios registrados hacer videollamadas entre ellos, así como enviarse mensajes.</li>
+									<li><a >Vídeo grupal</a>: vídeo realizado con tres compañeros de la asignatura. Consiste en un telediario donde se muestran distintas secciones con noticias graciosas.</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<h2 hidden>Desarrollo</h2>
+					<section>
+						<h2>Desarrollo</h2>
+						<ul>
+							<li>Tecnologías usadas:
+								<ul>
+									<li>HTML</li>
+									<li>CSS</li>
+									<li>JavaScript</li>
+								</ul>
+							</li>
+							<li>
+								Librería <a href="https://fontawesome.com/">Font Awesone</a> (iconos). 
+								<ul>
+									<li>Botones de la galería de imágenes.</li>
+									<li>Botón para hacer scroll al inicio de la página.</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Desarrollo</h2>
+						<ul>
+							<li>Uso de <b>grid layout</b> para el desarrollo del esquema general.</li>
+							<li>
+								Partes del esquema general:
+								<ul>
+									<li><b>Encabezado</b>: muestra el nombre del blog.</li>
+									<li><b>Barra de navegación</b>: muestra las distintas entradas del blog y proporciona acceso a ellas.</li>
+									<li><b>Cuerpo</b>: contenido asociado a una entrada.</li>
+									<li><b>Pie de página</b>: muestra el nombre de la autora (proporciona enlace a su correo electrónico) y el nombre de la asignura para la cual se ha creado este blog.</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section class="smaller">
+						<h2>Desarrollo</h2>
+						<ul>
+							<li>
+								Uso de <b>grid layout</b> en la entrada <b>Web Sokets</b>.
+								<ul>
+									<li>Colocar algunas imágenes en paralelo (pantallas con resolución superior a 1050px).</li>
+								</ul>
+							</li>
+						</ul>
+						<figure>
+							<pre>
+								<code class="hljs" data-trim>
+									.functions {
+										display: grid;
+										grid-gap: 10px;
+										grid-template-columns: repeat(2, 1fr);
+									}
+
+									.functions figure:first-child {
+										grid-column: 1;
+									}
+
+									.functions figure:last-child {
+										grid-column: 2;
+									}
+
+									.functions img {
+										height: 300px;
+										width: 100%;
+									}
+								</code>
+							</pre>
+							<figcaption>Grid layout (<b>websockets.css</b>)</figcaption>
+						</figure>
+					</section>
+					<section>
+						<h2>Desarrollo</h2>
+						<ul>
+							<li>Uso de <b>grid layout</b> en la entrada <b>Web Sokets</b>.</li>
+						</ul>
+						<figure>
+							<pre>
+								<code class="hljs" data-trim>
+									@media screen and (max-width: 1050px) {
+										.functions {
+											grid-template-columns: repeat(1, 1fr);
+										}
+									
+										.functions figure {
+											text-align: center;
+										}
+									   
+										.functions figure:first-child {
+											grid-column: 1;
+											grid-row: 1;
+										}
+										
+										.functions figure:last-child {
+											grid-column: 1;
+											grid-row: 2;
+										}
+									
+										.functions img {
+											width: 80%;
+										}
+									}
+								</code>
+							</pre>
+							<figcaption>Media query (<b>websockets.css</b>)</figcaption>
+						</figure>
+					</section>
+					<section>
+						<h2>Desarrollo</h2>
+						<ul>
+							<li>
+								Galería de imágenes en la entrada <b>WebRTC</b>.
+								<ul>
+									<li>Formada por dos botones y un componente <b>img</b></li>
+									<li>Uso de la propiedad <b>display: flex</b> para conseguir que los botones se muestren alineados con la imagen.</li>
+									<li>Uso de las propiedades <b>background-size</b> y <b>background-repeat</b> para hacer que la imagen ocupe todo el espacio del componente <b>img</b>.</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Desarrollo</h2>
+						<ul>
+							<li>En el fichero <b>webrtc.css</b> se observa el uso de las propiedades descritas.</li>
+						</ul>
+						<figure>
+							<pre>
+								<code class="hljs" data-trim>
+									#carrusel {
+										width: 100%;
+										display: flex;
+										justify-content: center;
+									}
+								   
+								   #carrusel > button {
+									   background: gainsboro;
+									   border: none;
+								   }
+								   
+								   #image {
+										width: 60%;
+										height: 350px;
+										background-size: 100% 100%;
+										background-repeat:no-repeat;
+									}
+								</code>
+							</pre>
+							<figcaption>Galería de imágenes (<b>webrtc.css</b>)</figcaption>
+						</figure>
+					</section>
+					<section>
+						<h2>Desarrollo</h2>
+						<ul>
+							<li>
+								En el fichero <b>webrtc.js</b> están las funciones necesarias para cargar dinámicamente 
+								las imágenes en la galería.
+							</li>
+							<li>
+								Funciones:
+								<ul>
+									<li><b>nextImage</b>: modifica la imagen actual por la siguiente. En el caso de que, tras cambiar la imagen, la imagen actual sea la última de la galería, se oculta el botón que se encuentra a la derecha de la imagen.</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Desarrollo</h2>
+						<ul>
+							<li>
+								Funciones:
+								<ul>
+									<li><b>backImage</b>: modifica la imagen actual por la anterior. En el caso de que, tras cambiar la imagen, la imagen actual sea la primera de la galería, se oculta el botón que se encuentra a la izquierda de la imagen.</li>
+                        			<li><b>renderImage</b>: modifica la imagen, así como el pie de foto asociado a ella, en función de la posición actual.</li>
+								</ul>
+							</li>
+						</ul>
+					</section>						
+				</section>		
+				<section>
+					<h2>Despliegue</h2>
+					<p>El código de este blog se puede encontrar en el <a href="https://github.com/TaniaAlvarezDiaz/BlogDifusionContenidos">GitHub</a> de la autora.</p>
+					<ul>
+						<li><a href="https://github.com/TaniaAlvarezDiaz/SlidesBlogDifusionContenidos">Documentación.</a></li>
+						<ul>
+							<li><a href="https://taniaalvarezdiaz.github.io/SlidesBlogDifusionContenidos">Presentación.</a></li>
+						</ul>
+					</ul>
+				</section>
 			</div>
 		</div>
 
+		<!-- SCRIPTS -->
 		<script src="js/reveal.js"></script>
-
 		<script>
 			// More info about config & dependencies:
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+				controls: true, //Display controls in the bottom right corner
+				progress: true, //Display a presentation progress bar
+                slideNumber: true, //Display the page number of the current slide
+				history: true, //Push each slide change to the browser history
+				keyboard: true, //Enable keyboard shortcuts for navigation
+                overview: true, //Enable the slide overview mode
+                center: true, //Vertical centering of slides
+                touch: true, //Enables touch navigation on devices with touch input
+                loop: false, //Loop the presentation
+                rtl: false, //Change the presentation direction to be RTL
+                fragments: true,  //Turns fragments on and off globally
+                embedded: false, //Flags if the presentation is running in an embedded mode, i.e. contained within a limited portion of the screen
+                help: true, //Flags if we should show a help overlay when the questionmark key is pressed
+                showNotes: false, //Flags if speaker notes should be visible to all viewers
+                autoSlide: 0, //Number of milliseconds between automatically proceeding to the next slide, disabled when set to 0, this value can be overwritten by using a data-autoslide attribute on your slides
+                autoSlideStoppable: true, //Stop auto-sliding after user input
+                mouseWheel: true, //Enable slide navigation via mouse wheel
+                hideAddressBar: true, //Hides the address bar on mobile devices
+                previewLinks: false, //Opens links in an iframe preview overlay
+                transition: 'convex', //none/fade/slide/convex/concave/zoom
+                transitionSpeed: 'slow', //default/slow/fast
+                backgroundTransition: 'none', //none/fade/slide/convex/concave/zoom  //Transition style for full page slide backgrounds
 				hash: true,
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/highlight/highlight.js' },
-					{ src: 'plugin/notes/notes.js', async: true }
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true }
 				]
 			});
 		</script>

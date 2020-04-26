@@ -1,0 +1,40 @@
+section:not(.center) > p {
+    text-align: justify;
+}
+
+li {
+    text-align: justify;
+}
+
+.reveal pre {
+    margin: auto;
+    box-shadow: none;
+}
+
+.reveal pre code {
+    max-height: 350px;
+}
+
+.smaller > p {
+    font-size: smaller;
+}
+
+.smaller > ul > li {
+    font-size: smaller;
+}
+
+.smaller > ul > li > ul > li {
+    font-size: smaller;
+}
+
+.reveal ul {
+    display: block;
+}
+
+.reveal section img {
+    margin-bottom: 0px;
+}
+
+figcaption {
+    font-size: small;
+}
